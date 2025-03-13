@@ -39,7 +39,7 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public User() {
+    public User(Object object, String string, String string2) {
 	}
 
 	public User(String id, String name, String email, String phone, String password) {

@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import workshop.domain.Post;
 import workshop.domain.User;
 import workshop.dto.UserDTO;
 import workshop.services.UserService;
@@ -58,6 +60,13 @@ public class UserResource {
         obj.setId(id);
         obj = service.update(obj);
         return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(value = "/{id}/posts", method=RequestMethod.GET)
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<List<Post>> findposts(@PathVariable String id) {
+        User obj = service.findById(id);
+        return ResponseEntity.ok().body(obj.getPosts()); 
     }
 }
 

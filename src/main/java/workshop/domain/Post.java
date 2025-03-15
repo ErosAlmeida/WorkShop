@@ -1,11 +1,14 @@
 package workshop.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import jakarta.persistence.Id;
+import workshop.dto.CommentsDTO;
 import workshop.dto.authorDTO;
 
 @Document
@@ -17,6 +20,9 @@ public class Post implements Serializable{
     private String title;
     private String body;
     private authorDTO author;
+
+    private List<CommentsDTO> comments = new ArrayList<>();
+
 
     @Override
     public int hashCode() {
@@ -73,6 +79,14 @@ public class Post implements Serializable{
 
     public void setBody(String body) {
         this.body = body;
+    }
+    
+    public List<CommentsDTO> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentsDTO> comments) {
+        this.comments = comments;
     }
 
     public Post(){

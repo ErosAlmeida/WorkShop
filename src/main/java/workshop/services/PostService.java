@@ -1,5 +1,7 @@
 package workshop.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import workshop.domain.Post;
@@ -18,5 +20,9 @@ public class PostService {
             throw new ObjectNotFoundException("Objeto nao encontrado");
         }
         return user;
+    }
+
+    public List<Post> findByTitle(String text){
+        return repo.findByTitleContainingIgnoreCase(text);
     }
 }
